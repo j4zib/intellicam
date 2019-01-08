@@ -40,7 +40,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if(notificationTitle.equals("unknown")){
             sendNotification(notificationTitle, notificationBody,id);
         }else{
-            customNotification(notificationTitle,notificationTitle+" has been detected");
+            customNotification(notificationTitle,notificationBody);
         }
 
     }
@@ -51,19 +51,31 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
-        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this,CHANNEL_ID)
-                .setAutoCancel(true)   //Automatically delete the notification
-                .setSmallIcon(R.mipmap.ic_launcher) //Notification icon
-                .setContentIntent(pendingIntent)
-                .setContentTitle(notificationTitle)
-                .setContentText(notificationBody)
-                .setSound(defaultSoundUri);
+        if(Integer.parseInt(notificationBody)>0) {
+            Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this, CHANNEL_ID)
+                    .setAutoCancel(true)   //Automatically delete the notification
+                    .setSmallIcon(R.drawable.ic_error_black_24dp) //Notification icon
+                    .setContentIntent(pendingIntent)
+                    .setContentTitle(notificationTitle)
+                    .setContentText(notificationTitle + " has been detected")
+                    .setSound(defaultSoundUri);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.notify(0, notificationBuilder.build());
 
-
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-        notificationManager.notify(0, notificationBuilder.build());
+        }
+        else{
+            Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this, CHANNEL_ID)
+                    .setAutoCancel(true)   //Automatically delete the notification
+                    .setSmallIcon(R.mipmap.ic_launcher) //Notification icon
+                    .setContentIntent(pendingIntent)
+                    .setContentTitle(notificationTitle)
+                    .setContentText(notificationTitle + " has been detected")
+                    .setSound(defaultSoundUri);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.notify(0, notificationBuilder.build());
+        }
     }
     private void sendNotification(String notificationTitle, String notificationBody,String id) {
         Intent notifyIntent = new Intent(this,Dialog.class);
@@ -73,19 +85,31 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         PendingIntent intent = PendingIntent.getActivity(this, 0,
                 notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this,CHANNEL_ID)
-                .setAutoCancel(true)   //Automatically delete the notification
-                .setSmallIcon(R.mipmap.ic_launcher) //Notification icon
-                .setContentIntent(intent)
-                .setContentTitle(notificationTitle)
-                .setContentText(notificationBody)
-                .setSound(defaultSoundUri);
+        if(Integer.parseInt(notificationBody)>0) {
+            Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this, CHANNEL_ID)
+                    .setAutoCancel(true)   //Automatically delete the notification
+                    .setSmallIcon(R.drawable.ic_error_black_24dp) //Notification icon
+                    .setContentIntent(intent)
+                    .setContentTitle(notificationTitle)
+                    .setContentText(notificationTitle + " Person")
+                    .setSound(defaultSoundUri);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.notify(0, notificationBuilder.build());
 
-
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-        notificationManager.notify(0, notificationBuilder.build());
+        }
+        else{
+            Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this, CHANNEL_ID)
+                    .setAutoCancel(true)   //Automatically delete the notification
+                    .setSmallIcon(R.mipmap.ic_launcher) //Notification icon
+                    .setContentIntent(intent)
+                    .setContentTitle(notificationTitle)
+                    .setContentText(notificationTitle + " Person")
+                    .setSound(defaultSoundUri);
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.notify(0, notificationBuilder.build());
+        }
     }
     private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
