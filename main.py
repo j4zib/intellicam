@@ -31,16 +31,13 @@ def add_person():
     u'name': u'unknown',
     u'spam': 0,
     u'rand': 0,
+    u'time': time.time(),
     u'id': str(id)
     })
     client = storage.Client()
     bucket = client.get_bucket('intellicam-b8bc8.appspot.com')
     blob = bucket.blob('%s.jpg'%id)
     blob.upload_from_filename('main.jpg')
-
-
-
-
 def detect():
     time.sleep(1)
     res=CF.face.detect('wallpaper_5.jpg')
@@ -63,6 +60,7 @@ def detect():
             doc_ref.update({
             u'name': docs.to_dict()['name'],
             u'spam': docs.to_dict()['spam'],
+            u'time': time.time(),
             u'rand': docs.to_dict()['rand']+1,
             u'id': str(id)
             })
