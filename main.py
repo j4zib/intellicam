@@ -42,7 +42,8 @@ def add_person():
 
 
 def detect():
-    res=CF.face.detect('wallpaper_0.jpg')
+    time.sleep(1)
+    res=CF.face.detect('wallpaper_5.jpg')
     print (res)
     id = []
     if(len(res)!=1):
