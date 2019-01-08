@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         FirestoreRecyclerOptions<Person> options = new FirestoreRecyclerOptions.Builder<Person>()
                 .setQuery(query, Person.class)
                 .build();
-
         adapter = new PersonAdapter(options);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);

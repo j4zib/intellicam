@@ -9,7 +9,7 @@ public class Person {
 
     }
 
-    public Person(String name, String imageURL,int spam) {
+    public Person(String name, String imageURL, int spam) {
         this.name = name;
         this.imageURL = imageURL;
     }
