@@ -1,11 +1,13 @@
 package com.example.j4zib.intellicam;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -17,12 +19,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private static final String TAG = "FirebaseMessagingServce";
+    String CHANNEL_ID="myChannel";
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
+        createNotificationChannel();
         String notificationTitle = null, notificationBody = null;
         String id= null;
+
 
         // Check if message contains a data payload.
         if (remoteMessage.getData().size()>0) {
@@ -45,7 +50,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+        NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this,CHANNEL_ID)
                 .setAutoCancel(true)   //Automatically delete the notification
                 .setSmallIcon(R.mipmap.ic_launcher) //Notification icon
                 .setContentIntent(intent)
@@ -57,5 +62,20 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(0, notificationBuilder.build());
+    }
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "intelliCam";
+            String description = "intelliCam is enabled";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }

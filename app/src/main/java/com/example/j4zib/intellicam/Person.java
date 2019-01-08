@@ -4,6 +4,7 @@ public class Person {
     private String name;
     private String imageURL;
     private int spam;
+    private String id;
 
     public Person(){
 
@@ -12,6 +13,14 @@ public class Person {
     public Person(String name, String imageURL, int spam) {
         this.name = name;
         this.imageURL = imageURL;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public int getSpam() {

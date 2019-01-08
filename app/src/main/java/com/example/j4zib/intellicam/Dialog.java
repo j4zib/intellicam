@@ -1,5 +1,6 @@
 package com.example.j4zib.intellicam;
 
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,12 +9,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Dialog extends AppCompatActivity {
     private static final String TAG = "Dialog";
@@ -21,6 +29,9 @@ public class Dialog extends AppCompatActivity {
     CheckBox spamCheck;
     Button doneButton;
     FirebaseFirestore db;
+    public ImageView image;
+    StorageReference storageReference;
+    FirebaseStorage storage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,24 +40,21 @@ public class Dialog extends AppCompatActivity {
         name = findViewById(R.id.nameEditText);
         spamCheck = findViewById(R.id.tick);
         doneButton = findViewById(R.id.button);
+        image = findViewById(R.id.imageView);
+
         final String test=getIntent().getStringExtra("id");
         Log.d(TAG, "onCreate: "+ test);
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
         db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("users").document(test);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        storageReference.child(test+".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                    } else {
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
+            public void onSuccess(Uri uri) {
+                Picasso.get()
+                        .load(uri)
+                        .placeholder(R.mipmap.ic_launcher)
+                        .fit()
+                        .into(image);
             }
         });
 

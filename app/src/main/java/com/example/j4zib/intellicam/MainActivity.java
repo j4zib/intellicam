@@ -1,5 +1,6 @@
 package com.example.j4zib.intellicam;
 
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,6 +56,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
+        adapter.setOnItemClickListener(new PersonAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(String string, int spam) {
+                Intent notifyIntent = new Intent(MainActivity.this,Dialog.class);
+                notifyIntent.putExtra("id",string);
+                notifyIntent.putExtra("spam",Integer.toString(spam));
+                startActivity(notifyIntent);
+            }
+        });
     }
     @Override
     protected void onStart() {

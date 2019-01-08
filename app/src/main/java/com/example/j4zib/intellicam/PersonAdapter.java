@@ -25,6 +25,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PersonAdapter extends FirestoreRecyclerAdapter<Person, PersonAdapter.ViewHolder> {
 
+    private OnItemClickListener onItemClickListener;
+
     StorageReference storageReference;
     FirebaseStorage storage;
 
@@ -68,10 +70,24 @@ public class PersonAdapter extends FirestoreRecyclerAdapter<Person, PersonAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
         public CircleImageView image;
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull final View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             image = itemView.findViewById(R.id.profile_image);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onItemClickListener!=null&&getAdapterPosition()!=RecyclerView.NO_POSITION)
+                        onItemClickListener.onItemClick(getItem(getAdapterPosition()).getId(),getItem(getAdapterPosition()).getSpam());
+                }
+            });
         }
+    }
+    public interface OnItemClickListener{
+        void onItemClick(String string,int spam);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }
