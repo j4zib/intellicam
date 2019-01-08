@@ -5,7 +5,6 @@ import datetime as dt
 from time import sleep
 import cognitive_face as CF
 import sqlite3
-from urllib.request import pathname2url
 import os
 import time
 import threading
