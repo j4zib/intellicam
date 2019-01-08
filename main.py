@@ -31,12 +31,16 @@ def add_person():
     doc_ref.set({
     u'name': u'unknown',
     u'spam': 0,
+    u'rand': 0,
     u'id': str(id)
     })
     client = storage.Client()
     bucket = client.get_bucket('intellicam-b8bc8.appspot.com')
     blob = bucket.blob('%s.jpg'%id)
     blob.upload_from_filename('main.jpg')
+
+
+
 
 def detect():
     res=CF.face.detect('wallpaper_0.jpg')
@@ -51,7 +55,19 @@ def detect():
     print(res)
     for f in res:
         if not f['candidates']:
-            add_person();
+            add_person()
+        else:
+            id=f['candidates'][0]['personId']
+            doc_ref = db.collection(u'users').document(id)
+            docs = doc_ref.get()
+            doc_ref.update({
+            u'name': docs.to_dict()['name'],
+            u'spam': docs.to_dict()['spam'],
+            u'rand': docs.to_dict()['rand']+1,
+            u'id': str(id)
+            })
+
+            #do something
             #print("test")
     # res = CF.person.lists('test1')
     # print(res[0])
