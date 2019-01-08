@@ -9,7 +9,10 @@ from urllib.request import pathname2url
 import os
 import time
 import threading
-import sqlite3
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+from google.cloud import storage
 
 lastRun=0
 
@@ -24,13 +27,16 @@ def add_person():
             continue
     res = CF.person_group.train('test1')
     print(res)
-    conn = sqlite3.connect('security.db')
-    conn.execute(f"INSERT INTO SECURITY (ID,NAME,SPAM) \
-      VALUES (?, 'unknown', 0);",(id,))
-    conn.commit()
-    conn.close()
-    #res = CF.person.add_face
-    #print(res)
+    doc_ref = db.collection(u'users').document(id)
+    doc_ref.set({
+    u'name': u'unknown',
+    u'spam': 0,
+    u'id': str(id)
+    })
+    client = storage.Client()
+    bucket = client.get_bucket('intellicam-b8bc8.appspot.com')
+    blob = bucket.blob('%s.jpg'%id)
+    blob.upload_from_filename('wallpaper_1.jpg')
 
 def detect():
     res=CF.face.detect('wallpaper_0.jpg')
@@ -49,6 +55,11 @@ def detect():
             #print("test")
     # res = CF.person.lists('test1')
     # print(res[0])
+
+
+cred = credentials.Certificate('intellicam-b8bc8-62957c6eaffa.json')
+firebase_admin.initialize_app(cred)
+db = firestore.client()
 
 cascPath = "haarcascade_frontalface_alt2.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
