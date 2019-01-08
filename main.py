@@ -36,7 +36,7 @@ def add_person():
     client = storage.Client()
     bucket = client.get_bucket('intellicam-b8bc8.appspot.com')
     blob = bucket.blob('%s.jpg'%id)
-    blob.upload_from_filename('wallpaper_1.jpg')
+    blob.upload_from_filename('main.jpg')
 
 def detect():
     res=CF.face.detect('wallpaper_0.jpg')
@@ -81,6 +81,7 @@ while True:
 
     # Capture frame-by-frame
     ret, frame = video_capture.read()
+    frameColor = cv2.cvtColor(frame,cv2.COLOR_BGR2BGRA)
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -101,6 +102,8 @@ while True:
     if(dontRun==False):
         i=i+1
         if(i>10):
+            img_item = ('main'+'.jpg')
+            cv2.imwrite(img_item,frameColor)
             dontRun=True
             i=0
     if(time.time()-lastRun>30):

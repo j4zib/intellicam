@@ -6,6 +6,6 @@ BASE_URL = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0'
 CF.BaseUrl.set(BASE_URL)
 CF.Key.set(Key)
 
-res = CF.person.delete('test1','2c0e5103-c8db-4bd0-93f9-1208df04dde7')
+res = CF.person.delete('test1','26270425-cb07-46b4-82e1-e622e0487b14')
 res = CF.person_group.train('test1')
 print (res)
