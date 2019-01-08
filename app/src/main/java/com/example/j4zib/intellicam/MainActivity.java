@@ -58,9 +58,10 @@ public class MainActivity extends AppCompatActivity {
 
         adapter.setOnItemClickListener(new PersonAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(String string, int spam) {
+            public void onItemClick(String string, int spam,String name) {
                 Intent notifyIntent = new Intent(MainActivity.this,Dialog.class);
                 notifyIntent.putExtra("id",string);
+                notifyIntent.putExtra("name",name);
                 notifyIntent.putExtra("spam",Integer.toString(spam));
                 startActivity(notifyIntent);
             }

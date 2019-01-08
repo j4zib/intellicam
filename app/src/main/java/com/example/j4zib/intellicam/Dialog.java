@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,6 +33,8 @@ public class Dialog extends AppCompatActivity {
     public ImageView image;
     StorageReference storageReference;
     FirebaseStorage storage;
+    String test;
+    TextView spamText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +44,11 @@ public class Dialog extends AppCompatActivity {
         spamCheck = findViewById(R.id.tick);
         doneButton = findViewById(R.id.button);
         image = findViewById(R.id.imageView);
-
-        final String test=getIntent().getStringExtra("id");
+        spamText = findViewById(R.id.spamDialog);
+        spamText.setText(getIntent().getStringExtra("spam"));
+        test=getIntent().getStringExtra("id");
+        if(getIntent().hasExtra("name"))
+            name.setText(getIntent().getStringExtra("name"));
         Log.d(TAG, "onCreate: "+ test);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
