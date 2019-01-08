@@ -9,8 +9,28 @@ from urllib.request import pathname2url
 import os
 import time
 import threading
+import sqlite3
 
 lastRun=0
+
+def add_person():
+    res = CF.person.create('test1','unknown')
+    id = res['personId']
+    for i in range(0,10):
+        try:
+            res = CF.person.add_face('wallpaper_'+str(i)+'.jpg','test1',id)
+            print(res)
+        except CF.CognitiveFaceException:
+            continue
+    res = CF.person_group.train('test1')
+    print(res)
+    conn = sqlite3.connect('security.db')
+    conn.execute(f"INSERT INTO SECURITY (ID,NAME,SPAM) \
+      VALUES (?, 'unknown', 0);",(id,))
+    conn.commit()
+    conn.close()
+    #res = CF.person.add_face
+    #print(res)
 
 def detect():
     res=CF.face.detect('wallpaper_0.jpg')
@@ -23,6 +43,12 @@ def detect():
         id.append(f['faceId'])
     res = CF.face.identify(id, 'test1')
     print(res)
+    for f in res:
+        if not f['candidates']:
+            add_person();
+            #print("test")
+    # res = CF.person.lists('test1')
+    # print(res[0])
 
 cascPath = "haarcascade_frontalface_alt2.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
@@ -35,6 +61,7 @@ video_capture = cv2.VideoCapture(0)
 anterior = 0
 
 i=0
+dontRun=False
 while True:
     if not video_capture.isOpened():
         print('Unable to load camera.')
@@ -57,10 +84,16 @@ while True:
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
         roi_gray = gray[y:y+h,x:x+w]
-        img_item = ('wallpaper_'+str(i)+'.jpg')
-        cv2.imwrite(img_item,roi_gray)
-
+        if(dontRun==False):
+            img_item = ('wallpaper_'+str(i)+'.jpg')
+            cv2.imwrite(img_item,roi_gray)
+    if(dontRun==False):
+        i=i+1
+        if(i>10):
+            dontRun=True
+            i=0
     if(time.time()-lastRun>30):
+        dontRun=False
         print('detect running')
         detectThread = threading.Thread(target=detect)
         detectThread.start()
