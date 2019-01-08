@@ -37,10 +37,34 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         }
         Log.d("tag",id);
-        sendNotification(notificationTitle, notificationBody,id);
+        if(notificationTitle.equals("unknown")){
+            sendNotification(notificationTitle, notificationBody,id);
+        }else{
+            customNotification(notificationTitle,notificationTitle+" has been detected");
+        }
+
     }
 
+    private void customNotification(String notificationTitle, String notificationBody) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent,
+                PendingIntent.FLAG_ONE_SHOT);
 
+        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this,CHANNEL_ID)
+                .setAutoCancel(true)   //Automatically delete the notification
+                .setSmallIcon(R.mipmap.ic_launcher) //Notification icon
+                .setContentIntent(pendingIntent)
+                .setContentTitle(notificationTitle)
+                .setContentText(notificationBody)
+                .setSound(defaultSoundUri);
+
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        notificationManager.notify(0, notificationBuilder.build());
+    }
     private void sendNotification(String notificationTitle, String notificationBody,String id) {
         Intent notifyIntent = new Intent(this,Dialog.class);
         notifyIntent.putExtra("id",id);
