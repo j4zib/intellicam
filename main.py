@@ -15,6 +15,14 @@ lastRun=0
 def detect():
     res=CF.face.detect('wallpaper_0.jpg')
     print (res)
+    id = []
+    if(len(res)!=1):
+        print("Not detected")
+        return
+    for f in res:
+        id.append(f['faceId'])
+    res = CF.face.identify(id, 'test1')
+    print(res)
 
 cascPath = "haarcascade_frontalface_alt2.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
@@ -42,7 +50,7 @@ while True:
         gray,
         scaleFactor=1.1,
         minNeighbors=5,
-        minSize=(60, 60)
+        minSize=(30, 30)
     )
 
     # Draw a rectangle around the faces
@@ -54,8 +62,8 @@ while True:
 
     if(time.time()-lastRun>30):
         print('detect running')
-        #detectThread = threading.Thread(target=detect)
-        #detectThread.start()
+        detectThread = threading.Thread(target=detect)
+        detectThread.start()
         lastRun=time.time() 
     # Display the resulting frame
     cv2.imshow('Video', frame)
