@@ -11,30 +11,21 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class PersonAdapter extends ListAdapter<Person,PersonAdapter.ViewHolder> {
+public class PersonAdapter extends FirestoreRecyclerAdapter<Person, PersonAdapter.ViewHolder> {
 
 
 
-    public PersonAdapter() {
-        super(DIFF_CALLBACK);
+    public PersonAdapter(@NonNull FirestoreRecyclerOptions<Person> options) {
+        super(options);
     }
 
-    private static final DiffUtil.ItemCallback<Person> DIFF_CALLBACK = new DiffUtil.ItemCallback<Person>() {
-        @Override
-        public boolean areItemsTheSame(@NonNull Person oldItem, @NonNull Person newItem) {
-            return oldItem.getImageURL()==newItem.getImageURL();
-        }
 
-        @Override
-        public boolean areContentsTheSame(@NonNull Person oldItem, @NonNull Person newItem) {
-            return oldItem.getName().equals(newItem.getName())
-                    &&oldItem.getImageURL().equals(newItem.getImageURL());
-        }
-    };
 
     @NonNull
     @Override
@@ -44,8 +35,7 @@ public class PersonAdapter extends ListAdapter<Person,PersonAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PersonAdapter.ViewHolder viewHolder, int i) {
-        Person person = getItem(i);
+    public void onBindViewHolder(@NonNull PersonAdapter.ViewHolder viewHolder, int i, @NonNull Person person) {
         viewHolder.name.setText(person.getName());
         Picasso.get()
                 .load(person.getImageURL())
