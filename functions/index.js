@@ -16,6 +16,7 @@ exports.pushNotification = functions.firestore.document('users/{userId}').onWrit
     const payload = {
         data: {
             name: newValue.name,
+            id:newValue.id,
             spam: spa,
             sound: "default"
         },
