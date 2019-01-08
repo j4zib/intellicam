@@ -26,6 +26,9 @@ public class Dialog extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dialog);
+        name = findViewById(R.id.nameEditText);
+        spamCheck = findViewById(R.id.tick);
+        doneButton = findViewById(R.id.button);
         final String test=getIntent().getStringExtra("id");
         Log.d(TAG, "onCreate: "+ test);
         db = FirebaseFirestore.getInstance();
@@ -51,12 +54,14 @@ public class Dialog extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 db.collection("users").document(test).update(
-                        "name", name.getText(),
+                        "name", name.getText().toString(),
                         "spam", spamCheck.isChecked()?Integer.parseInt(getIntent().getStringExtra("spam"))+1:Integer.parseInt(getIntent().getStringExtra("spam"))
                 );
+                finish();
 
             }
         });
+
 
     }
 }
