@@ -39,6 +39,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private void sendNotification(String notificationTitle, String notificationBody,String id) {
         Intent notifyIntent = new Intent(this,Dialog.class);
         notifyIntent.putExtra("id",id);
+        notifyIntent.putExtra("spam",notificationBody);
         notifyIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent intent = PendingIntent.getActivity(this, 0,
                 notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
