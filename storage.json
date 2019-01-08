@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "intellicam-b8bc8",
+  "private_key_id": "eb4a6382536ccf5555030fcf165da419ee392eb2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCdUR4vdg69HAd5\ntJOdNulbqEfh66Zys/dIqDTM7lKsN2NasTVpcq3u6U0yz72Q2YmkfyXxUmN23csu\nxLB5Jy9umaRj7xebYIpTryfl/y6YQRSz9uUk94VpzQGo9up7PP+X20PD8FhEqWtE\nPb2d7+ASNutMWRrIVphZWVyTrZX7FIwESbB6zjmtUQakfqif99ZvBspezgqp35gv\ndlW24T5nUO7hLL/PVxEK4v3JVs1CZU0mFDYYQ2VnqWl2115b1xMNdnqD5jDRlMfp\nHiycg6kYMyjbE8gRz0yF3prJAzQ3f9PIU9uMkbUIWqc8NK8h3baTJG2PwxJ0nX0K\nBaSzKJw/AgMBAAECggEAECnM9ahmFEUEeZs1jXIeYNX16L7q/58A+byajDGyWdJp\nCWDqsXZga4sZ7O4ONos7SqTrs5M49/YK0bfQv+noRC9SBhiDLuoo3DdDXKyuz2Lk\naycjXPx3fyrakE8qQVY/lo0nNcMEdq2HgV/skwUZ2xU8cMA48bt/9LIrQlsT7VOC\nX923DOMgEnMik7KVwXYi2bZG25se452yRaz7kpuJZF6PbzefqtGHLRrjIff3Y0lJ\ny0X/gH/V760/wAlmJfI0DXp1f7iYhjihQojni+h7mDmCAceN5IvYjnVM6OHZYjUH\ncrkSGPzbHUN11MPyQ6pghXcwzaLY1/1b/DFda+5meQKBgQDKoz55g6/NIS9IXiZx\ns3O+4yBe9lmr9JHV+lMdewPyauSdz4HTTD8UzLu/zDD6aHtCygOzjkg4SjtUUN0x\nCn9NadIgu5TyfSDR/HXHY2dVkZgrjAOQpiyDcqVBemCvyKG+N5rduqMW7m6ZUjx3\nT6OWdh6M+NePGBOkf8kI/oJ/NwKBgQDGvpX3vG4YFexdH7rziKAjVo4F5vGzBmnq\ndJTUX7ZKG4/3gUnxMMtgpUIOL4Tbc/DhfKxvDe6Jk4wtZL2f/Q+JRwIzfZtQW5g7\nOgA8Ib83zVrJLI8UMTEa6wskVwbz+nAllKgn7HiVit+Pwj+UDPrWAGfcVoeBWkmi\nCbg9v/J/OQKBgQCc+o2hcSS10qlgdJ9vocde73DaYBnjnlmD3KKayfuqxqhIoMJA\nQGb15Azmbnba5inm+byYUvcbtFX14ZcZMLqh7AJ+nRKsL8dHJT7Qse8RWPL7eUIh\nwrnlMuFWsklIpDK4uzbb4oQJdbh0SkLRYv6lxuev6e6DyfEdlGjW8OODTQKBgAS3\n+a+MFcEUpCwB2Np3X/X21CBnv01U1abvZak1LIrN5LknpK3JTsrYoZzcm/bp5co0\nv5NTbVpu2mEphycJRxknSnIWhV1/Dzo4wlCrLHMSuRkVqb/8+wF8myMdvdiFFayO\nvv9TqflC9tPe9Mt7E2mJUO32T/lOP3lNacZtjEBhAoGBAKcJ76NiZS/xNCMVZLAT\nAZi1vkSik9KWHDfHNUqyOobKmjZE8g3sEYwg8DNrumt3kKEMROqHeRi9pChmYEOG\nWJzPooZo26Wu+BEzDBUuF1CCM2Lyi88YKpwFjQhuVKOuX9K20+qBrU6ocn3uvCqm\nvPO0Z2+bRhuAG6aGq0aJUnL4\n-----END PRIVATE KEY-----\n",
+  "client_email": "storage@intellicam-b8bc8.iam.gserviceaccount.com",
+  "client_id": "114395852645801088412",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/storage%40intellicam-b8bc8.iam.gserviceaccount.com"
+}

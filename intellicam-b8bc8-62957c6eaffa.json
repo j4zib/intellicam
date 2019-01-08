@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "intellicam-b8bc8",
+  "private_key_id": "62957c6eaffaa99990971eed1f3395e2e975cdc3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC3wLSO8DIx9ZRs\nrdZ+dCUamLS/BEBsD/+DJk9cL7aInWYrPtZ13MZd7Rvqw0issMxGJQKQflfsWEOg\nToDY7vKLdTBv6hN+wzusMdextARvI0Pd0I+nFwQAT0NFmtU7fhG7FYr7MMNUDcaU\nvWhikASGF3Mlq1kacXG8+tdQ6eLRacplPc/+lDUQVu+HMitLcXeyXw5pwWkUSzNJ\n/gDVODFcBFIcaH1ZA0ummcNgpO29GfeJuIe2BX7JF3jPioHzfNrD+Ojz3M0MTmv7\ngZlhLEYgatovZHT8s8DsQfEWzdzhAOkrvowU24wPf2ympbR3MrX67juxNYW3B9ym\niqY3ngmJAgMBAAECggEAJ/tyTjfNdDlvVkZtCY7UE/luOrH+IoVIn4zSb8ih+w/k\njzxZBcRIFV/mVyquwYSmrgyXhkE3eGGsNVFfj9ROSjHxnChenZJ1hX5C5JO680PF\nHJqo5z6GzFpy1M5f31YLHZ4OY6G0nrFwqCSedfPISDUKBQRHmw1cJjaeayi5Bb+U\nTzPAEYuD71Ce8eVzIPWh3jGhfYKRWLOulzu1n8v6xZtSDf6Qqa0vNcczp6BdectV\njb51VEH3k3njXcBkSB7miS5AmlCHEFiEYbIHKoRygJVdZ72oCFi1oO+Lw+Zqq2Z6\nghfB/PYoOyd7MAbXcqpWt9k0g66nOLekUiZEDoGSEQKBgQDucSGluj79dRmBTpkA\nSQcCLWvmaRgVl4I8IL6PBAkK3viAfNq9lJoFDRkhl/tHIQbLBzaATqt2CqbWb7qn\nzP76IamsuVd0PJilNawU6MVAh8yWMYRnPe/BLr23lMpi4IImkxwipvD8YNgtlWMe\nYJNbPE+oaB2zQIRPtuj/ZcsTlwKBgQDFSKDht2D3pTYjIp4avL9JbnuHF+001ocz\nbbZqyecUXTJ1UyM1UIy7z5p1I7drHOLbohqRhBaJVBBuP0ljgyPssk8PRA0dDOYp\nr6xtVoPxU9PMsllFk6qvyXzQ0eXqtbiaqPdcWN+f9Zsj7q70tLbiENeoPOaCQ2f1\nBv6tRMLv3wKBgQDEYEo86rosFsAtveTG1l4+TdhayF08ky6AhNtMgB9OY7q4X5vr\nnTKITHRRNZGO0EV++u7JF4GhUz56x0QsJOouaYELrw22vp1dG2ohQmAKOI2neRq5\nyMnoCa3YP2O7sXmfeXMnmuRIhx4j1K/wecuCzZYxdaZYVh9iY5tblKN++wKBgD9X\njGAscrPQlcs+KClJhNlc4ciERCL85jf69+DdppYBPlwxL1LE5ArBI0SNDS0U/zmp\nmII0ONAq74OWSkfrKTOsJHowTU2QgK3Nu7z3VDG9ynkkokkWmm0KckrRudJcOkNe\nEN3ToylGwGMPFZl4FGgNJFDeDNyyK8SeVFLpivVdAoGBAOCxFkXTTiyPaJcUPTWc\nceSFwr6OpktczT5lrEqZTAUP1yMSXraDlLlJHKPUOp83AD9v1fv2rCD5Lc4fLATZ\n27NQNEoFN8EfmzIJmUBg0IT6f7LiWcIzF1RZqXbfP9VjjDpIISAq05kRzAtXKxkW\nJq8p3VQMx/aWlxP5IcWn3qpG\n-----END PRIVATE KEY-----\n",
+  "client_email": "intellicam-b8bc8@appspot.gserviceaccount.com",
+  "client_id": "112209839836159006941",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/intellicam-b8bc8%40appspot.gserviceaccount.com"
+}
