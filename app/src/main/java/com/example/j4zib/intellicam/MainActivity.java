@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FirebaseMessaging.getInstance().subscribeToTopic("pushNotifications");
-        Query query = notebookRef;
+        Query query = notebookRef.orderBy("time",Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<Person> options = new FirestoreRecyclerOptions.Builder<Person>()
                 .setQuery(query, Person.class)

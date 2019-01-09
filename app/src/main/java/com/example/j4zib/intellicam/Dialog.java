@@ -49,6 +49,7 @@ public class Dialog extends AppCompatActivity {
         test=getIntent().getStringExtra("id");
         if(getIntent().hasExtra("name"))
             name.setText(getIntent().getStringExtra("name"));
+        else name.setText("unknown");
         Log.d(TAG, "onCreate: "+ test);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
