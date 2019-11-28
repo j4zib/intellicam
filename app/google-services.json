@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "56258347033",
+    "firebase_url": "https://intellicam-b8bc8.firebaseio.com",
+    "project_id": "intellicam-b8bc8",
+    "storage_bucket": "intellicam-b8bc8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:56258347033:android:36b28b491e6d22d0",
+        "android_client_info": {
+          "package_name": "com.example.j4zib.intellicam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "56258347033-26poufv8oio20hvncdvln2r3vp0ch857.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.j4zib.intellicam",
+            "certificate_hash": "9324ab428709fb5a193d57db57c345df40627b53"
+          }
+        },
+        {
+          "client_id": "56258347033-i68g3mdn83maq871sf2pvu08552mr676.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEyFxlayaLhHjYYNAV28GitPciCM0a6nI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "56258347033-i68g3mdn83maq871sf2pvu08552mr676.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
